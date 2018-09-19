@@ -28,19 +28,11 @@ auth.set_access_token(access_token, access_secret)
  
 api = tweepy.API(auth)
 
-tweets = api.user_timeline(screen_name='Mmq30584069',count=200, include_rts=False,exclude_replies=True)
+tweets = api.user_timeline(screen_name='NatGeoPhotos',count=40, include_rts=False,exclude_replies=True)
 
 last_id = tweets[-1].id
  
-while (True):
-    more_tweets = api.user_timeline(screen_name='Mmq30584069',count=200,include_rts=False,exclude_replies=True,max_id=last_id-1)
 
-# There are no more tweets
-    if (len(more_tweets) == 0):
-      break
-    else:
-      last_id = more_tweets[-1].id-1
-      tweets = tweets + more_tweets
 
 media_files = set()
 for status in tweets:
